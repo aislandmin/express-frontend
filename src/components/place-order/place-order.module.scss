@@ -1,0 +1,344 @@
+@mixin partingline($top: 36px) {
+  &::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 0;
+    // left: 50%;
+    // transform: translateX(-50%);
+    top: $top;
+    border-top: 1px solid rgb(233, 232, 232);
+  }
+}
+
+@mixin partingline-top {
+  &::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 0;
+    // left: 50%;
+    // transform: translateX(-50%);
+    top: 0;
+    border-top: 1px solid rgb(233, 232, 232);
+  }
+}
+
+@mixin item-low-left-right {
+  display: flex;
+  text-align: left;
+  padding: 10px 0;
+
+  .low-item-left {
+    width: 25%;
+  }
+  .low-item-right {
+    width: 75%;
+  }
+}
+
+@mixin pickup-delivery-card {
+  margin-top: 30px;
+  .input-card-title {
+    color: rgb(150, 148, 148);
+    font-size: 16px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+  }
+  .input-card-content {
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px 30px;
+    font-size: 20px;
+
+    .item-contact-name {
+      @include item-low-left-right;
+    }
+    .item-contact-phone {
+      @include item-low-left-right;
+      position: relative;
+      @include partingline-top;
+    }
+    .item-contact-unit {
+      @include item-low-left-right;
+      position: relative;
+      @include partingline-top;
+    }
+    .item-contact-buzzer {
+      @include item-low-left-right;
+      position: relative;
+      @include partingline-top;
+    }
+  }
+}
+.place-order-content-container {
+  :global {
+    .place-order-content {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 50px 0;
+      display: flex;
+      justify-content: space-between;
+
+      .place-order-left {
+        width: 68%;
+        vertical-align: top;
+
+        .place-order-map {
+          width: 100%;
+          height: 425px;
+          &.short {
+            height: 260px;
+          }
+        }
+        .place-order-input {
+          .pickup-card {
+            @include pickup-delivery-card;
+          }
+          .delivery-card {
+            @include pickup-delivery-card;
+          }
+          .item-info-card {
+            margin-top: 30px;
+            .input-card-title {
+              color: rgb(150, 148, 148);
+              font-size: 16px;
+              margin-left: 30px;
+              margin-bottom: 10px;
+            }
+            .input-card-content {
+              border-radius: 10px;
+              background-color: white;
+              padding: 10px 30px;
+              font-size: 20px;
+              .item-type {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 0;
+                .low-item-right {
+                  cursor: pointer;
+                }
+              }
+              .item-type-content {
+                display: flex;
+                margin-bottom: 20px;
+                div {
+                  border-radius: 15px;
+                  background-color: rgb(233, 232, 232);
+                  padding: 5px 15px;
+                  margin-right: 5px;
+                  cursor: pointer;
+                  &.checked {
+                    background-color: rgb(39, 39, 138);
+                    color: white;
+                  }
+                }
+              }
+              .item-weight {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 0;
+                position: relative;
+                @include partingline-top;
+
+                .low-item-right {
+                  cursor: pointer;
+                }
+              }
+              .item-weight-content {
+                display: flex;
+                margin-bottom: 20px;
+                div {
+                  border-radius: 15px;
+                  background-color: rgb(233, 232, 232);
+                  padding: 5px 15px;
+                  margin-right: 5px;
+                  cursor: pointer;
+                  &.checked {
+                    background-color: rgb(39, 39, 138);
+                    color: white;
+                  }
+                }
+              }
+            }
+          }
+
+          .remarks-card {
+            margin-top: 30px;
+            .input-card-title {
+              color: rgb(150, 148, 148);
+              font-size: 16px;
+              margin-left: 30px;
+              margin-bottom: 10px;
+            }
+            .input-card-content {
+              border-radius: 10px;
+              background-color: white;
+              padding: 10px 30px;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+      .place-order-right {
+        width: 28%;
+
+        .place-order-right-ordernow {
+          .delivery-options {
+            h3 {
+              position: relative;
+              @include partingline;
+              font-size: 28px;
+              margin-top: 0;
+            }
+            ul {
+              list-style: none;
+              padding: 0;
+              margin-bottom: 30px;
+              font-size: 14px;
+              li {
+                margin: 10px 0;
+                input {
+                  margin: 0 10px 0 0;
+                }
+              }
+            }
+          }
+          .pickup {
+            h3 {
+              position: relative;
+              @include partingline;
+              font-size: 28px;
+              margin-top: 0;
+            }
+            .pickup-address-show {
+              font-size: 14px;
+              margin-bottom: 30px;
+              .pickup-marker {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 10px;
+                background-color: lightblue;
+                margin-right: 10px;
+              }
+            }
+          }
+          .delivery {
+            h3 {
+              position: relative;
+              @include partingline;
+              font-size: 28px;
+              margin-top: 0;
+            }
+            .delivery-address-show {
+              font-size: 14px;
+              margin-bottom: 30px;
+              .delivery-marker {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 10px;
+                background-color: lightgreen;
+                margin-right: 10px;
+              }
+            }
+          }
+
+          .order-button {
+            outline: none;
+            background-color: rgb(55, 55, 216);
+            font-size: 26px;
+            border: none;
+            width: 100%;
+            height: 50px;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            cursor: pointer;
+          }
+        }
+
+        .place-order-right-inputsubmit {
+          .tips {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: white;
+            border-radius: 10px;
+
+            .tips-title {
+              display: flex;
+              justify-content: space-between;
+
+              padding: 15px 0;
+              margin: 0 15px;
+
+              position: relative;
+              @include partingline(50px);
+            }
+            .tips-options {
+              list-style: none;
+              padding: 5px 15px;
+              text-align: center;
+              margin: 10px 0;
+
+              .tips-options-item {
+                padding: 8px 0;
+                margin: 8px 0;
+                border-radius: 5px;
+                background-color: rgb(236, 234, 234);
+              }
+            }
+          }
+          .total-price {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: white;
+            border-radius: 10px;
+            margin: 15px auto 18px auto;
+
+            .total-price-title {
+              display: flex;
+              justify-content: space-between;
+              padding: 15px 0;
+              margin: 0 15px 15px 15px;
+
+              position: relative;
+              @include partingline(50px);
+
+              .text {
+                font-size: 14px;
+                color: rgb(184, 181, 181);
+              }
+            }
+            .item-fee {
+              display: flex;
+              justify-content: space-between;
+              margin: 5px 15px;
+              font-size: 14px;
+            }
+            .total {
+              text-align: right;
+              padding: 10px 15px;
+              font-size: 28px;
+            }
+          }
+          .submit-button {
+            outline: none;
+            background-color: rgb(55, 55, 216);
+            font-size: 26px;
+            border: none;
+            width: 100%;
+            height: 50px;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

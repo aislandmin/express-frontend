@@ -1,0 +1,149 @@
+@mixin order-item-template {
+  background-color: white;
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .order-item-title {
+    font-size: 16px;
+    font-weight: bold;
+    width: 20%;
+    text-align: left;
+    margin-left: 20px;
+  }
+  .order-item-value {
+    font-size: 16px;
+    width: 20%;
+    color: rgb(150, 149, 149);
+    text-align: right;
+    margin-right: 20px;
+  }
+}
+
+@mixin partingline {
+  &::before {
+    position: absolute;
+    content: "";
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    border-top: 1px solid rgb(233, 232, 232);
+  }
+}
+
+.order-detail-container {
+  :global {
+    .order-status {
+      @include order-item-template;
+      border-radius: 10px;
+    }
+
+    .password {
+      @include order-item-template;
+      margin: 10px 0;
+      border-radius: 10px;
+
+      .order-item-value {
+        display: inline-block;
+        .order-password-value-copy {
+          font-size: 16px;
+          font-weight: bold;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .pickup-address {
+      @include order-item-template;
+      justify-content: flex-start;
+      border-radius: 10px 10px 0 0;
+
+      .order-item-title {
+        width: 10%;
+        text-align: center;
+      }
+      .order-item-value {
+        width: 60%;
+        text-align: left;
+      }
+    }
+
+    .send-address {
+      @include order-item-template;
+      justify-content: flex-start;
+      border-radius: 0 0 10px 10px;
+
+      position: relative;
+      @include partingline;
+
+      .order-item-title {
+        width: 10%;
+        text-align: center;
+      }
+      .order-item-value {
+        width: 60%;
+        text-align: left;
+      }
+    }
+
+    .order-type {
+      @include order-item-template;
+      margin: 10px 0 0 0;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .order-id {
+      @include order-item-template;
+
+      position: relative;
+      @include partingline;
+    }
+
+    .order-date,
+    .pickup-time,
+    .delivery-time,
+    .item-type,
+    .points,
+    .order-cost {
+      @include order-item-template;
+
+      position: relative;
+      @include partingline;
+    }
+
+    .booking-fee,
+    .base-fare,
+    .distance-surcharge,
+    .additional-fee,
+    .tax-hst,
+    .tips {
+      @include order-item-template;
+      font-size: 12px;
+      padding: 0 0 5px 0;
+
+      .order-item-title {
+        color: rgb(150, 149, 149);
+      }
+    }
+
+    .points-discount {
+      @include order-item-template;
+      font-size: 10px;
+      padding: 0 0 10px 0;
+
+      .order-item-title {
+        color: rgb(150, 149, 149);
+      }
+    }
+
+    .payment-method {
+      @include order-item-template;
+      border-radius: 0 0 10px 10px;
+
+      position: relative;
+      @include partingline;
+    }
+  }
+}

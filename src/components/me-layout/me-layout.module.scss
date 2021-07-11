@@ -1,0 +1,95 @@
+.me-layout-container {
+  background-color: rgb(230, 228, 228);
+
+  .me-layout {
+    max-width: 1120px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+
+    :global {
+      .me-layout-left {
+        width: 25%;
+        height: 480px;
+        background-color: white;
+        border-radius: 10px;
+        margin: 50px 0;
+        padding-top: 10px;
+
+        .me-layout-left-title {
+          text-decoration: none;
+          color: black;
+
+          .me-layout-left-title-text {
+            padding: 10px 20px;
+            box-sizing: border-box;
+            cursor: pointer;
+            &:hover,
+            &.clicked {
+              background-color: rgb(230, 228, 228);
+            }
+          }
+        }
+
+        .me-layout-left-title-text {
+          padding: 10px 20px;
+          box-sizing: border-box;
+          margin: 18px auto;
+        }
+
+        .me-layout-my-account-ul {
+          list-style: none;
+          padding: 0;
+
+          li {
+            padding: 10px 20px;
+
+            &:hover,
+            &.clicked {
+              background-color: rgb(230, 228, 228);
+            }
+            img {
+              vertical-align: middle;
+            }
+            .me-layout-left-subtitle {
+              display: inline-block;
+              text-decoration: none;
+              vertical-align: middle;
+              margin: 10px;
+              font-size: 16px;
+              font-weight: bold;
+              color: rgb(150, 149, 149);
+              cursor: pointer;
+            }
+          }
+        }
+
+        .me-layout-left-settings {
+          padding: 10px 20px;
+          margin: 10px auto 40px auto;
+          &:hover,
+          &.clicked {
+            background-color: rgb(230, 228, 228);
+          }
+          img {
+            vertical-align: middle;
+          }
+          .me-layout-left-logout {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            color: rgb(150, 149, 149);
+          }
+        }
+      }
+    }
+    .me-layout-right {
+      width: 68%;
+      margin: 50px 0;
+    }
+  }
+}
