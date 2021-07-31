@@ -1,7 +1,6 @@
 import { useHistory } from "react-router-dom";
 import {getOrderType, getOrderStatus} from "../order-functions";
 
-
 export default function OrderListItem(props) {
   const itemData = props.itemData;
   const history = useHistory();

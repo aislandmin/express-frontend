@@ -1,51 +1,46 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import styles from "./balance.module.scss";
 
 function Balance() {
-  const [timeString, setTimeString] = useState("");
-  const [timeHandle, setTimeHandle] = useState(null);
-
-  function countDown() {
-    const endTime = new Date(2021, 6, 15, 12, 0, 0, 0);
-    const nowTime = new Date();
-    const gapTime = endTime.getTime() - nowTime.getTime();
-    if (gapTime === 0 && timeHandle) {
-      clearInterval(timeHandle);
-    }
-    const day = Math.floor(gapTime / 1000 / 60 / 60 / 24);
-    const hour = Math.floor((gapTime / 1000 / 60 / 60) % 24);
-    const minute = Math.floor((gapTime / 1000 / 60) % 60);
-    const second = Math.floor((gapTime / 1000) % 60);
-    setTimeString(
-      day +
-        " days " +
-        hour +
-        " hours " +
-        minute +
-        " minutes " + 
-        second +
-        " seconds"
-    );
-  }
-
-  useEffect(() => {
-    countDown();
-    setTimeHandle(setInterval(countDown, 1000));
-    return function cleanup() {
-      if (timeHandle) {
-        clearInterval(timeHandle);
-      }
-    };
-  }, []);
-
   return (
-    <>
-      <h2>Balance</h2>
-      <h2>Count Down</h2>
-      <h1>Target: 2021-7-15 12:00:00</h1>
-      <h3>{timeString}</h3>
-
-    </>
+    <div className={styles["me-layout-balance-right-content"]}>
+      <div className="balance-card">
+        <div className="balance-card-title">Balance: $120</div>
+        <div className="balance-card-recharge">
+          <div className="balance-card-recharge-title">
+            Recharge Amount $ 12.00
+          </div>
+          <div className="balance-card-recharge-content">
+            <div className="balance-card-recharge-content-text">
+              <div>
+                <img alt="" src="/bankcard_icon.png" />
+                <span>Credit / Debit</span>
+                <img alt="" src="/paymethodcheck_icon.png" />
+              </div>
+              <div>
+                <img alt="" src="/paypal_icon.png" />
+                <span>Paypal</span>
+                <img alt="" src="/paymethodnocheck_icon.png" />
+              </div>
+            </div>
+            <button
+              type="button"
+              className="balance-card-recharge-content-button"
+            >
+              Load
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="history-card">
+        <div className="history-item-left">Expenditure History</div>
+        <div className="history-item-right">Recharge History</div>
+      </div>
+      <div className="me-layout-right-content">
+        <div className="right-item-empty-img">
+          <img alt="" src="/list-empty.png"></img>
+        </div>
+      </div>
+    </div>
   );
 }
 

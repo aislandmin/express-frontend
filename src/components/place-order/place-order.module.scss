@@ -4,8 +4,6 @@
     content: "";
     width: 100%;
     left: 0;
-    // left: 50%;
-    // transform: translateX(-50%);
     top: $top;
     border-top: 1px solid rgb(233, 232, 232);
   }
@@ -17,8 +15,6 @@
     content: "";
     width: 100%;
     left: 0;
-    // left: 50%;
-    // transform: translateX(-50%);
     top: 0;
     border-top: 1px solid rgb(233, 232, 232);
   }
@@ -34,6 +30,8 @@
   }
   .low-item-right {
     width: 75%;
+    border: none;
+    outline: none;
   }
 }
 
@@ -81,12 +79,27 @@
       justify-content: space-between;
 
       .place-order-left {
+        position: relative;
         width: 68%;
         vertical-align: top;
 
+        .place-order-left-mask {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          background-color: rgba(0, 0, 0, 0);
+          z-index: 100;
+        }
+
+        &.gray {
+          filter: grayscale(1);
+        }
+
         .place-order-map {
           width: 100%;
-          height: 425px;
+          height: 478px;
           &.short {
             height: 260px;
           }
@@ -117,6 +130,10 @@
                 padding: 10px 0;
                 .low-item-right {
                   cursor: pointer;
+                  &.arrow-down {
+                    transform-origin: center;
+                    transform: rotate(90deg);
+                  }
                 }
               }
               .item-type-content {
@@ -143,6 +160,10 @@
 
                 .low-item-right {
                   cursor: pointer;
+                  &.arrow-down {
+                    transform-origin: center;
+                    transform: rotate(90deg);
+                  }
                 }
               }
               .item-weight-content {
@@ -176,6 +197,13 @@
               background-color: white;
               padding: 10px 30px;
               font-size: 20px;
+              .input-card-content-textarea {
+                border: none;
+                outline: none;
+                width: 100%;
+                resize: none;
+                overflow: hidden;
+              }
             }
           }
         }
@@ -191,16 +219,12 @@
               font-size: 28px;
               margin-top: 0;
             }
-            ul {
-              list-style: none;
+            .radio-group {
               padding: 0;
-              margin-bottom: 30px;
+              margin-bottom: 25px;
               font-size: 14px;
-              li {
+              input {
                 margin: 10px 0;
-                input {
-                  margin: 0 10px 0 0;
-                }
               }
             }
           }
@@ -213,7 +237,10 @@
             }
             .pickup-address-show {
               font-size: 14px;
-              margin-bottom: 30px;
+              margin-bottom: 25px;
+              display: flex;
+              align-items: center;
+
               .pickup-marker {
                 display: inline-block;
                 width: 10px;
@@ -221,6 +248,9 @@
                 border-radius: 10px;
                 background-color: lightblue;
                 margin-right: 10px;
+              }
+              .pickup-google-map-autocomplete {
+                flex: 1;
               }
             }
           }
@@ -233,7 +263,10 @@
             }
             .delivery-address-show {
               font-size: 14px;
-              margin-bottom: 30px;
+              margin-bottom: 25px;
+              display: flex;
+              align-items: center;
+
               .delivery-marker {
                 display: inline-block;
                 width: 10px;
@@ -241,6 +274,9 @@
                 border-radius: 10px;
                 background-color: lightgreen;
                 margin-right: 10px;
+              }
+              .delivery-google-map-autocomplete {
+                flex: 1;
               }
             }
           }
@@ -288,6 +324,12 @@
                 margin: 8px 0;
                 border-radius: 5px;
                 background-color: rgb(236, 234, 234);
+                cursor: pointer;
+
+                &.checked {
+                  background-color: rgb(39, 39, 138);
+                  color: white;
+                }
               }
             }
           }
@@ -326,6 +368,172 @@
             }
           }
           .submit-button {
+            outline: none;
+            background-color: rgb(55, 55, 216);
+            font-size: 26px;
+            border: none;
+            width: 100%;
+            height: 50px;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            cursor: pointer;
+          }
+        }
+
+        .place-order-right-inputpay {
+          .total-price {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: white;
+            border-radius: 10px;
+            margin: 0 auto;
+
+            .total-price-title {
+              display: flex;
+              justify-content: space-between;
+              padding: 15px 0;
+              margin: 0 15px 15px 15px;
+
+              position: relative;
+              @include partingline(50px);
+
+              .text {
+                font-size: 14px;
+                color: rgb(184, 181, 181);
+              }
+            }
+            .item-fee {
+              display: flex;
+              justify-content: space-between;
+              margin: 5px 15px;
+              font-size: 14px;
+            }
+            .total {
+              text-align: right;
+              padding: 10px 15px;
+              font-size: 28px;
+            }
+          }
+
+          .use-points {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: white;
+            border-radius: 10px;
+            margin: 15px auto 18px auto;
+
+            .points-input-redeem {
+              padding: 15px 0;
+              margin: 0 15px;
+
+              .redeem-input {
+                width: 70%;
+                border: 1px solid rgb(230, 228, 228);
+                border-radius: 5px 0 0 5px;
+                border-right: none;
+                outline: none;
+              }
+              .redeem-button {
+                width: 30%;
+                border-radius: 0 5px 5px 0;
+                outline: none;
+                background-color: rgb(25, 25, 167);
+                color: white;
+                cursor: pointer;
+              }
+            }
+
+            .or-partingline {
+              // padding: 15px 0;
+              // margin: 20px 35px;
+              // margin: 15px auto 18px auto;
+              height: 20px;
+              margin: 0 15px;
+              margin-bottom: 15px;
+              text-align: center;
+              position: relative;
+
+              // padding: 0 20px 0;
+              // margin: 20px 0;
+              // line-height: 1px;
+              border-bottom-width: 1px;
+              border-bottom-style: dashed;
+              border-bottom-color: rgb(230, 228, 228);
+              // border-right: 40% dashed rgb(230, 228, 228);
+              span {
+                position: absolute;
+                top: 5px;
+                background-color: white;
+                padding: 0 15px;
+                left: 50%;
+                transform: translateX(-50%);
+              }
+            }
+
+            .use-points-title {
+              display: flex;
+              justify-content: space-between;
+              padding: 15px 0;
+              margin: 0 15px;
+              .title {
+                font-size: 18px;
+              }
+              .text {
+                font-size: 14px;
+                color: rgb(184, 181, 181);
+              }
+            }
+          }
+
+          .payment-method {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: white;
+            border-radius: 10px;
+            margin: 15px auto 18px auto;
+
+            .payment-method-title {
+              padding: 15px 0;
+              margin: 0 15px;
+              text-align: left;
+            }
+
+            .payment-method-item {
+              position: relative;
+              @include partingline(-5px);
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin: 5px 15px;
+              height: 55px;
+
+              .item-left {
+                .item-icon {
+                  width: 25px;
+                  vertical-align: middle;
+                }
+                .item-text {
+                  font-size: 16px;
+                  display: inline-block;
+                  vertical-align: middle;
+                  margin-left: 10px;
+                  .item-text-first {
+                    font-size: 16px;
+                  }
+                  .item-text-second {
+                    font-size: 14px;
+                    color: red;
+                  }
+                }
+              }
+            }
+          }
+
+          .pay-button {
             outline: none;
             background-color: rgb(55, 55, 216);
             font-size: 26px;

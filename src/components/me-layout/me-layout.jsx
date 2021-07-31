@@ -53,23 +53,19 @@ function MeLayout(props) {
       <div className={styles["me-layout-container"]}>
         <div className={styles["me-layout"]}>
           <div className="me-layout-left">
-            <div
-              className="me-layout-left-title"
+            <h3
+              className={
+                pathType === "order"
+                  ? "me-layout-left-title-click clicked"
+                  : "me-layout-left-title-click"
+              }
               onClick={() => {
                 handleMenuClick("/me/order");
               }}
             >
-              <h3
-                className={
-                  pathType === "order"
-                    ? "me-layout-left-title-text clicked"
-                    : "me-layout-left-title-text"
-                }
-              >
-                My Orders
-              </h3>
-            </div>
-            <h3 className="me-layout-left-title-text">My Account</h3>
+              My Orders
+            </h3>
+            <h3 className="me-layout-left-title-noclick">My Account</h3>
             <ul className="me-layout-my-account-ul">
               <li
                 className={
@@ -111,7 +107,7 @@ function MeLayout(props) {
                 <div className="me-layout-left-subtitle">Points</div>
               </li>
             </ul>
-            <h3 className="me-layout-left-title-text">Settings</h3>
+            <h3 className="me-layout-left-title-noclick">Settings</h3>
             <div
               className="me-layout-left-settings"
               onClick={handleLogoutClick}

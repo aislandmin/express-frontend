@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./order.module.scss";
 import OrderListIterm from "./order-list-item";
-import { useEffect } from "react";
 import axios from "axios";
 
 function Order() {
@@ -16,7 +15,6 @@ function Order() {
           method: "POST",
           data: {},
         });
-        console.log("Get me order resData: ", resData);
         setOrdersList(resData.data.data);
       } catch (er) {
         console.log("Get error from http://localhost:3000/login", er);
@@ -31,9 +29,8 @@ function Order() {
   }
 
   const titles = ["Incomplete", "Unpaid", "Completed", "Cancelled"];
-
   const STATUS_MAP = { Incomplete: 1, Unpaid: 2, Completed: 3, Cancelled: 4 };
-  const orderSeletor = ordersList.filter((item) => {
+  const orderSelector = ordersList.filter((item) => {
     return item.status === STATUS_MAP[orderType];
   });
   return (
@@ -58,9 +55,15 @@ function Order() {
         </ul>
       </div>
       <div className={styles["me-layout-right-content"]}>
-        {orderSeletor.map((item, index) => {
-          return <OrderListIterm itemData={item} key={index}/>;
-        })}
+        {orderSelector.length !== 0 ? (
+          orderSelector.map((item, index) => {
+            return <OrderListIterm itemData={item} key={index} />;
+          })
+        ) : (
+          <div className="right-item-empty-img">
+            <img alt="" src="/list-empty.png"></img>
+          </div>
+        )}
       </div>
     </>
   );

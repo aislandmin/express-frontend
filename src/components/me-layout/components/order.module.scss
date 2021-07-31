@@ -32,6 +32,12 @@
 
 .me-layout-right-content {
   :global {
+    .right-item-empty-img {
+      text-align: center;
+      img {
+        width: 300px;
+      }
+    }
     .me-layout-item-content {
       border-radius: 10px;
       background-color: white;
@@ -60,13 +66,6 @@
           width: 24%;
           text-align: center;
         }
-      }
-    }
-
-    .null-content {
-      text-align: center;
-      img {
-        width: 220px;
       }
     }
   }

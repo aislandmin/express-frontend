@@ -1,0 +1,20 @@
+.me-layout-points-right-content {
+  :global {
+    .points-card {
+      border-radius: 10px;
+      background-color: white;
+      padding: 10px 30px;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+
+      .points-card-title {
+        padding: 10px 0;
+        font-weight: bold;
+      }
+      .points-card-points {
+        padding: 10px 0;
+      }
+    }
+  }
+}

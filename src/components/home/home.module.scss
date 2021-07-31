@@ -19,7 +19,6 @@
     display: flex;
     justify-content: space-between;
     margin: 88px auto 0 auto;
-    color: white;
 
     .express-advertise-left {
       flex: 1;
@@ -30,12 +29,14 @@
         font-weight: bold;
         margin-top: 0;
         margin-bottom: 0;
+        color: white;
       }
       h4.express-adv-text {
         font-size: 24px;
         font-weight: lighter;
         margin-top: 40px;
         margin-bottom: 0;
+        color: white;
       }
       .express-adv-button-link {
         button.express-adv-button {
@@ -120,7 +121,6 @@
   .express-services-header {
     position: relative;
     margin-top: 150px;
-    color: white;
     max-width: 1120px;
     margin-left: auto;
     margin-right: auto;
@@ -129,6 +129,7 @@
       font-size: 48px;
       margin-top: 0;
       margin-bottom: 0;
+      color: white;
     }
     h4 {
       font-size: 16px;
@@ -137,6 +138,7 @@
       margin-top: 40px;
       margin-bottom: 0px;
       max-width: 540px;
+      color: white;
     }
     button {
       margin-top: 56px;
@@ -220,7 +222,6 @@
 
 @mixin card-template($bg-color, $color) {
   background-color: $bg-color;
-  color: $color;
 
   padding: 38px 43px;
   text-align: center;
@@ -237,12 +238,14 @@
     margin-top: 20px;
     margin-bottom: 0px;
     white-space: nowrap;
+    color: $color;
   }
   p {
     font-size: 13px;
     margin-top: 26px;
     margin-bottom: 12px;
     line-height: 20px;
+    color: $color;
   }
 }
 

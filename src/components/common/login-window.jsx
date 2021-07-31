@@ -99,5 +99,53 @@ export default function LoginWindow(props) {
     </div>
   );
 
-  return code !== 200 && element;
+  return (
+    <div className={styles["express-login-window-container"]}>
+      <div className="express-login-window">
+        <img alt="" src="/login-bg.jpg" />
+        <div className="express-login-form">
+          <div className="express-login-form-company">
+            <img alt="" src="/logo-without-glow.png" />
+            <h4>M.Y Flash Express</h4>
+          </div>
+          <div className="express-login-form-panel">
+            <div className="express-login-form-panel-header">
+              <div className="express-login-form-header-text">
+                Forget Password
+              </div>
+              <div className="express-login-form-header-text">Sign Up</div>
+            </div>
+            <div className="express-login-form-panel-input">
+              <input
+                placeholder="Enter your phone number"
+                text="text"
+                name="username"
+                value={username}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="express-login-form-panel-input">
+              <input
+                placeholder="Password"
+                type="password"
+                name="password"
+                value={password}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            {code === 500 ? (
+              <p className="express-login-form-panel-warning">{message}</p>
+            ) : null}
+            <button
+              className="express-login-form-panel-btn"
+              onClick={HandleSubmitClick}
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

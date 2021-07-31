@@ -17,7 +17,7 @@ export function getSessionUserIno() {
   }
 
   const dataObj = JSON.parse(data);
-  const expirePeriod = 500 * 1000; //1分钟
+  const expirePeriod = 5000 * 1000; //5000 seconds
 
   if (new Date().getTime() - dataObj.time > expirePeriod) {
     console.log("expires, local storage remove name.....");
